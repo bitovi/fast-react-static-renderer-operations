@@ -11,6 +11,7 @@ resource "aws_s3_bucket" "s3_static_files" {
     OperationsRepoEnvironment = "global-tools"
   }
 
+  # Depricated warning; https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_cors_configuration
   cors_rule {
     allowed_headers = ["Authorization", "Content-Length"]
     allowed_methods = ["GET", "POST"]
