@@ -80,14 +80,14 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 }
 
 # TODO: move to new file
-resource "null_resource" "react_s3_distribution" {
+resource "null_resource" "s3_distribution_cache" {
   depends_on = [
-    aws_cloudfront_distribution.react_s3_distribution
+    aws_cloudfront_distribution.s3_distribution
   ]
 
   # invalidate the cloudfront distribution
   provisioner "local-exec" {
-    command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.react_s3_distribution.id} --paths \"/*\""
+    command = "aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.s3_distribution.id} --paths \"/*\""
   }
 
   # tag with a timestamp for cachebusting
