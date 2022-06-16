@@ -1,0 +1,28 @@
+name: Deploy global-tools
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "global-tools/*"
+      - "global-tools/**/*"
+      - ".github/workflows/deploy-global-tools.yaml"
+
+  workflow_dispatch:
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: bitops
+      env:
+        ENVIRONMENT: global-tools
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+        AWS_DEFAULT_REGION: us-east-2
+        TF_STATE_BUCKET: fast-react-static-renderer-operations-build-tools
+      run: |
+        echo "running  _scripts/deploy/deploy.sh"
+        ./_scripts/deploy/deploy.sh
