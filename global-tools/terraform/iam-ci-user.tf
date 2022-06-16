@@ -15,7 +15,7 @@ resource "aws_iam_access_key" "v0" {
 
 #policy
 resource "aws_iam_policy" "s3" {
-  name        = "ci-user-s3"
+  name        = "frsr-ci-user-s3"
   description = "policy for s3"
 
 
