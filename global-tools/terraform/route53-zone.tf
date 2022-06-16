@@ -1,4 +1,7 @@
 resource "aws_route53_zone" "main" {
   name = var.domain_name
-  tags = var.common_tags
+  tags = {
+    OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
+    OperationsRepoEnvironment = "global-tools"
+  }
 }
