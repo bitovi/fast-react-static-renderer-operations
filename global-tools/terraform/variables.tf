@@ -7,5 +7,5 @@ variable "bucket_name" {
 variable "domain_name" {
   type        = string
   description = "The domain name."
-  default = "frsr.bitovi.com"
+  default = "fast-react-static-renderer.com"
 }
