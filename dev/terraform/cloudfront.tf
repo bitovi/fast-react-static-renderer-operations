@@ -18,11 +18,14 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       origin_protocol_policy = "http-only"
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
-    # origin_path = "/${var.app_subpath_react}/${var.app_version_react}"
+
+    # TODO: re-enable and ensure builds use app_version
+    # origin_path = "/${var.app_version}"
   }
 
   enabled         = true
   is_ipv6_enabled = true
+  default_root_object = "index.html"
 
   aliases = [var.subdomain_name]
 
@@ -67,7 +70,6 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    # TODO create ACM
     acm_certificate_arn      = aws_acm_certificate.ssl_certificate.arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
