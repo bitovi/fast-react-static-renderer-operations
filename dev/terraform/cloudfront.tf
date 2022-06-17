@@ -25,6 +25,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled         = true
   is_ipv6_enabled = true
+  # TODO: figure out if this removes the need for cloudfront function
   default_root_object = "index.html"
 
   aliases = [var.subdomain_name]
