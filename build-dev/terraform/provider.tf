@@ -1,8 +1,8 @@
 terraform {
-  required_providers {
-    null = {
-      source = "hashicorp/null"
-      version = "3.1.1"
-    }
-  }
+  required_version = ">= 0.13"
+}
+
+provider "aws" {
+  region  = "us-east-2"
+  version = "~> 2.66.0"  # version changed
 }
