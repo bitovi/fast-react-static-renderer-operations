@@ -1,0 +1,30 @@
+name: Deploy build-dev
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "build-dev/*"
+      - "build-dev/**/*"
+      - ".github/workflows/deploy-build-dev.yaml"
+
+  workflow_dispatch:
+
+# concurrency:
+#   group: environment-dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: bitops
+      env:
+        ENVIRONMENT: build-dev
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+        AWS_DEFAULT_REGION: us-east-2
+        TF_STATE_BUCKET: fast-react-static-renderer-operations-build-dev
+      run: |
+        echo "running  _scripts/deploy/deploy.sh"
+        ./_scripts/deploy/deploy.sh
