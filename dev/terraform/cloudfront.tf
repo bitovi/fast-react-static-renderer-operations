@@ -10,8 +10,8 @@
 resource "aws_cloudfront_distribution" "s3_distribution" {
   # This points to s3
   origin {
-    domain_name = var.subdomain_name
-    origin_id   = var.bucket_name
+    domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
+    origin_id   = aws_s3_bucket.s3_static_files.id
     custom_origin_config {
       http_port              = 80
       https_port             = 443
@@ -24,7 +24,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   enabled         = true
   is_ipv6_enabled = true
 
-  # aliases = [var.subdomain_name_react]
+  aliases = [var.domain_name]
 
   custom_error_response {
     error_caching_min_ttl = 0
