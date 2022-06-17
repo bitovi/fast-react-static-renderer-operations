@@ -55,10 +55,6 @@ variable "aws_region" {
   description = "AWS Region"
 }
 
-variable "common_tags" {
-  description = "Common tags you want applied to all components."
-}
-
 variable "s3_bucket_contents" {
   description = "S3_BUCKET_CONTENTS env var for react"
 }
