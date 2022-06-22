@@ -40,12 +40,12 @@ resource "aws_iam_policy" "s3" {
             "Action":[
                 "s3:ListBucket"
             ],
-            "Resource":"arn:aws:s3:::bitovi-operations-tgif-lambda"
+            "Resource":"arn:aws:s3:::fast-react-static-renderer-artifacts"
         },
         {
             "Effect":"Allow",
             "Action": "s3:*Object",
-            "Resource":"arn:aws:s3:::bitovi-operations-tgif-lambda/*"
+            "Resource":"arn:aws:s3:::fast-react-static-renderer-artifacts/*"
         },
         {
             "Sid": "VisualEditor0",
