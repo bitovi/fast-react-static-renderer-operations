@@ -125,11 +125,10 @@ output "iam_user_arn" {
   value = aws_iam_user.this.arn
 }
 
+output "access_key_id" {
+  value = aws_iam_access_key.v0.id
+}
 
 output "secret_access_key" {
   value = aws_iam_access_key.v0.secret
-}
-
-output "user_arn" {
-  value = aws_iam_user.this.unique_id
 }
