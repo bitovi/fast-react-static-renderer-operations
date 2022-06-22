@@ -23,7 +23,7 @@ image_registry_url      =  "368433847371.dkr.ecr.us-west-2.amazonaws.com"
 image_registry_image    =  "ecom"
 image_registry_tag      =  "build-manager"
 aws_region  = "us-east-2"
-s3_bucket_contents  = "fast-react-static-renderer-operations-build-dev"
+s3_bucket_contents  = "fast-react-static-renderer-artifacts"
 publish_s3_bucket   = "fast-react-static-renderer-sites-dev"
 build_output_subdirectory   = "out"
 # TODO: Dynamic
