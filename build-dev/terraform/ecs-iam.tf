@@ -27,7 +27,7 @@ resource "aws_iam_role_policy_attachment" "ecsTaskExecutionRole_policy" {
 # attach the ci-user policy (see global-tools/terraform/iam-ci-user.tf)
 resource "aws_iam_role_policy_attachment" "build_ci_user_policy" {
   role       = aws_iam_role.ecsTaskExecutionRole.name
-  policy_arn = "arn:aws:iam::368433847371:policy/ci-user-s3"
+  policy_arn = "arn:aws:iam::368433847371:policy/frsr-ci-user-s3"
 }
 
 # attach a policy to invalidate the cloudfront cache
