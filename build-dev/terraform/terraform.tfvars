@@ -5,7 +5,7 @@ secret_arn_contentful_space_id = "arn:aws:secretsmanager:us-east-2:368433847371:
 # APP
 app_name        = "fast-react-static-renderer"
 app_environment = "build-dev"
-app_version     = "latest"
+app_version     = "devops"
 common_tags = {
   OperationsRepo = "bitovi/fast-react-static-renderer-operations"
   OperationsRepoEnvironment = "build-dev"
