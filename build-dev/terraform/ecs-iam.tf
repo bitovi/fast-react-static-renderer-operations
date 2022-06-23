@@ -78,8 +78,8 @@ resource "aws_iam_policy" "ecs-runner" {
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:ecs:us-west-2:368433847371:task-definition/ecom-build-task:*",
-        "arn:aws:ecs:us-west-2:368433847371:task/ecom-build-build-tools-cluster/*"
+        "arn:aws:ecs:us-west-2:368433847371:task-definition/fast-react-static-renderer-task:*",
+        "arn:aws:ecs:us-west-2:368433847371:task/fast-react-static-renderer-build-dev-cluster/*"
       ]
     },
     {
