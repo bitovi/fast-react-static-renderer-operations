@@ -49,11 +49,11 @@ locals {
       },{
         "name": "CONTENTFUL_SPACE_ID",
         # "value": data.aws_secretsmanager_secret_version.spaceid.secret_string
-        "value": "${jsondecode(aws_secretsmanager_secret_version.spaceid.secret_string)["ContentfulSpaceID"]}"
+        "value": "${jsondecode(data.aws_secretsmanager_secret_version.spaceid.secret_string)["ContentfulSpaceID"]}"
       },{
         "name": "CONTENTFUL_ACCESS_TOKEN",
         # "value": data.aws_secretsmanager_secret_version.access_token.secret_string
-        "value": "${jsondecode(aws_secretsmanager_secret_version.access_token.secret_string)["ContentfulAccessToken"]}"
+        "value": "${jsondecode(data.aws_secretsmanager_secret_version.access_token.secret_string)["ContentfulAccessToken"]}"
       # TODO: remove?
       # },{
       #   "name": "APP_SUBPATH",
