@@ -19,5 +19,5 @@ variable "subdomain_name" {
 variable "hosted_zone_id" {
   type = string
   description = "Hostedzone ID created in global-tools for domain name"
-  default = "Z00497363RJ1BRXGYZES2"
+  default = "Z09768261LFU7OL6902KA"
 }
