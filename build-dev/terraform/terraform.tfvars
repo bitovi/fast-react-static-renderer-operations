@@ -18,7 +18,7 @@ private_subnets    = ["10.10.0.0/24", "10.10.1.0/24"]
 
 # ECS
 # TODO: Replace with new image after created
-image_registry_url      =  "368433847371.dkr.ecr.us-west-2.amazonaws.com"
+image_registry_url      =  "271557913550.dkr.ecr.us-east-2.amazonaws.com"
 # TODO: Replace with new image after created
 image_registry_image    =  "ecom"
 image_registry_tag      =  "build-manager"
