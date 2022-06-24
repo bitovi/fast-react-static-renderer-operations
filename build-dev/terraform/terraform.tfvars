@@ -1,6 +1,6 @@
 # CONTENTFUL secrets
-secret_arn_contentful_access_token = "arn:aws:secretsmanager:us-east-2:368433847371:secret:ContentfulAccessToken-NIU3zI"
-secret_arn_contentful_space_id = "arn:aws:secretsmanager:us-east-2:368433847371:secret:ContentfulSpaceID-FXm2ED"
+secret_arn_contentful_access_token = "arn:aws:secretsmanager:us-east-2:271557913550:secret:ContentfulAccessToken-XQ85Q0"
+secret_arn_contentful_space_id = "arn:aws:secretsmanager:us-east-2:271557913550:secret:ContentfulSpaceID-68lFVR"
 
 # APP
 app_name        = "fast-react-static-renderer"
