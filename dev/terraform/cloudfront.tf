@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
 
     # TODO: re-enable and ensure builds use app_version
-    origin_path = "/react/devops" 
+    origin_path = "/react/latest"
   }
 
   enabled         = true
