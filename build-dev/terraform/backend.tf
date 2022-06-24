@@ -4,7 +4,7 @@
 terraform {
   backend "s3" {
     region  = "us-east-2"
-    bucket  = "fast-react-static-renderer-operations-build-dev"
+    bucket  = "fast-react-static-renderer-operations-build-dev-state"
     key     = "fast-react-static-renderer-operations-build-dev"
     encrypt = true #AES-256encryption
   }
