@@ -29,4 +29,4 @@ build_output_subdirectory   = "out"
 # TODO: Dynamic
 cloudfront_distribution_id  = "EZQD6UR6P1GRP"
 build_manager_mode  = "1"
-catalog_url = "https://catalog.bitovi-tgif.com/menu.json"
+catalog_url = "https://catalog.fast-react-static-renderer.com/"
