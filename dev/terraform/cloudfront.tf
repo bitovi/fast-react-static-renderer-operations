@@ -7,6 +7,8 @@
 #   code    = file("${path.module}/js-rewrite/cf-url-rewrite.js")
 # }
 
+data "aws_caller_identity" "current" {}
+
 resource "aws_cloudfront_distribution" "s3_distribution" {
   # This points to s3
   origin {

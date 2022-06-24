@@ -1,4 +1,5 @@
 #IAM USER Config
+data "aws_caller_identity" "current" {}
 
 resource "aws_iam_user" "this" {
   name          = "frsr-ci-user"
@@ -69,7 +70,7 @@ resource "aws_iam_policy" "s3" {
             "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": "ecr:*",
-            "Resource": "arn:aws:ecr:*:368433847371:repository/*"
+            "Resource": "arn:aws:ecr:*:${data.aws_caller_identity.current.account_id}:repository/*"
         }
         
     ]
@@ -98,7 +99,7 @@ resource "aws_iam_policy" "secrets" {
             "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": "secretsmanager:*",
-            "Resource": "arn:aws:secretsmanager:*:368433847371:secret:*"
+            "Resource": "arn:aws:secretsmanager:*:${data.aws_caller_identity.current.account_id}:secret:*"
         }
     ]
 }
