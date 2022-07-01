@@ -1,5 +1,3 @@
-data "aws_caller_identity" "current" {}
-
 resource "aws_cloudfront_distribution" "s3_distribution_catalog" {
   # This points to s3
   origin {
