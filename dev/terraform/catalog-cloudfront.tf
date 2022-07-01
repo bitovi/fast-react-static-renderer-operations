@@ -1,6 +1,6 @@
 data "aws_caller_identity" "current" {}
 
-resource "aws_cloudfront_distribution" "s3_distribution" {
+resource "aws_cloudfront_distribution" "s3_distribution_catalog" {
   # This points to s3
   origin {
     domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
@@ -76,7 +76,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 }
 
 # TODO: move to new file
-resource "null_resource" "s3_distribution_cache" {
+resource "null_resource" "s3_distribution_cache_catalog" {
   depends_on = [
     aws_cloudfront_distribution.s3_distribution
   ]
