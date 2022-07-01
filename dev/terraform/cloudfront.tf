@@ -1,11 +1,11 @@
 # Cloudfront S3 for redirect slashes
 # https://advancedweb.hu/how-to-use-cloudfront-functions-to-change-the-origin-request-path/
-# resource "aws_cloudfront_function" "rewrite_uri_react" {
-#   name    = "rewrite-request-react"
-#   runtime = "cloudfront-js-1.0"
-#   publish = true
-#   code    = file("${path.module}/js-rewrite/cf-url-rewrite.js")
-# }
+resource "aws_cloudfront_function" "rewrite_uri_react" {
+  name    = "rewrite-request-react"
+  runtime = "cloudfront-js-1.0"
+  publish = true
+  code    = file("${path.module}/js-rewrite/cf-url-rewrite.js")
+}
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   # This points to s3
@@ -58,10 +58,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     default_ttl            = 86400
     max_ttl                = 31536000
 
-    # function_association {
-    #   event_type   = "viewer-request"
-    #   function_arn = aws_cloudfront_function.rewrite_uri_react.arn
-    # }
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.rewrite_uri_react.arn
+    }
   }
 
   restrictions {
