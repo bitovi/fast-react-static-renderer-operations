@@ -6,8 +6,8 @@ resource "aws_route53_record" "catalog-dns" {
   type    = "A"
 
   alias {
-    name                   = aws_cloudfront_distribution.s3_distribution.catalog_domain_name
-    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    name                   = aws_cloudfront_distribution.s3_distribution_catalog.domain_name
+    zone_id                = aws_cloudfront_distribution.s3_distribution_catalog.hosted_zone_id
     evaluate_target_health = false
   }
 }
