@@ -1,13 +1,4 @@
-# Cloudfront S3 for redirect slashes
-# https://advancedweb.hu/how-to-use-cloudfront-functions-to-change-the-origin-request-path/
-resource "aws_cloudfront_function" "rewrite_uri_react" {
-  name    = "rewrite-request-react"
-  runtime = "cloudfront-js-1.0"
-  publish = true
-  code    = file("${path.module}/js-rewrite/cf-url-rewrite.js")
-}
-
-resource "aws_cloudfront_distribution" "s3_distribution" {
+resource "aws_cloudfront_distribution" "s3_distribution_catalog" {
   # This points to s3
   origin {
     domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
@@ -20,15 +11,15 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
 
     # TODO: re-enable and ensure builds use app_version
-    origin_path = "/react/latest"
+    origin_path = "/catalog/latest"
   }
 
   enabled         = true
   is_ipv6_enabled = true
   # TODO: figure out if this removes the need for cloudfront function
-  default_root_object = "index.html"
+  default_root_object = "pages.json"
 
-  aliases = [var.subdomain_name]
+  aliases = [var.catalog_domain_name]
 
   custom_error_response {
     error_caching_min_ttl = 0
@@ -58,10 +49,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     default_ttl            = 86400
     max_ttl                = 31536000
 
-    function_association {
-      event_type   = "viewer-request"
-      function_arn = aws_cloudfront_function.rewrite_uri_react.arn
-    }
+    # function_association {
+    #   event_type   = "viewer-request"
+    #   function_arn = aws_cloudfront_function.rewrite_uri_react.arn
+    # }
   }
 
   restrictions {
@@ -83,7 +74,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 }
 
 # TODO: move to new file
-resource "null_resource" "s3_distribution_cache" {
+resource "null_resource" "s3_distribution_cache_catalog" {
   depends_on = [
     aws_cloudfront_distribution.s3_distribution
   ]

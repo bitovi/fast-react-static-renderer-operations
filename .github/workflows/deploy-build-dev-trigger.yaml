@@ -1,24 +1,21 @@
-name: Deploy build-dev
+name: Deploy build-dev trigger
 
 on:
-  push:
-    branches: [ main ]
-    paths:
-      - "build-dev/*"
-      - "build-dev/**/*"
-      - ".github/workflows/deploy-build-dev.yaml"
-
   workflow_dispatch:
+    inputs:
+      caller_repo_id:
+        description: 'Repo that called this one'
+        required: true
 
-# concurrency:
-#   group: environment-dev
+concurrency:
+  group: environment-build-dev
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: bitops
+    - name: ${{ github.event.inputs.caller_repo_id }}
       env:
         ENVIRONMENT: build-dev
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

@@ -16,8 +16,14 @@ variable "subdomain_name" {
   default = "dev.fast-react-static-renderer.com"
 }
 
+variable "catalog_domain_name" {
+  type = string
+  description = "Subdomain that will be used for hosted env catalog"
+  default = "catalog-dev.fast-react-static-renderer.com"
+}
+
 variable "hosted_zone_id" {
   type = string
   description = "Hostedzone ID created in global-tools for domain name"
-  default = "Z00497363RJ1BRXGYZES2"
+  default = "Z09768261LFU7OL6902KA"
 }

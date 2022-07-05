@@ -1,3 +1,4 @@
+data "aws_caller_identity" "current" {}
 
 resource "aws_iam_role" "ecsTaskExecutionRole" {
   name               = "${var.app_name}-execution-task-role"
@@ -27,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "ecsTaskExecutionRole_policy" {
 # attach the ci-user policy (see global-tools/terraform/iam-ci-user.tf)
 resource "aws_iam_role_policy_attachment" "build_ci_user_policy" {
   role       = aws_iam_role.ecsTaskExecutionRole.name
-  policy_arn = "arn:aws:iam::368433847371:policy/frsr-ci-user-s3"
+  policy_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/frsr-ci-user-s3"
 }
 
 # attach a policy to invalidate the cloudfront cache
@@ -35,9 +36,9 @@ resource "aws_iam_policy" "cloudfront" {
   name = "${var.app_name}-build-dev-cloudfront-invalidation"
 
   # angular
-  # "arn:aws:cloudfront::368433847371:distribution/E34450W1O9P7SH",
+  # "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/E34450W1O9P7SH",
   # react
-  # "arn:aws:cloudfront::368433847371:distribution/E1P5X4XDUERR45",
+  # "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/E1P5X4XDUERR45",
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -50,7 +51,7 @@ resource "aws_iam_policy" "cloudfront" {
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:cloudfront::368433847371:distribution/*"
+        "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/*"
       ]
     }
   ]
@@ -78,8 +79,8 @@ resource "aws_iam_policy" "ecs-runner" {
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:ecs:us-east-2:368433847371:task-definition/fast-react-static-renderer-task:*",
-        "arn:aws:ecs:us-east-2:368433847371:task/fast-react-static-renderer-build-dev-cluster/*"
+        "arn:aws:ecs:us-east-2:${data.aws_caller_identity.current.account_id}:task-definition/fast-react-static-renderer-task:*",
+        "arn:aws:ecs:us-east-2:${data.aws_caller_identity.current.account_id}:task/fast-react-static-renderer-build-dev-cluster/*"
       ]
     },
     {

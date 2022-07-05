@@ -1,11 +1,11 @@
 # CONTENTFUL secrets
-secret_arn_contentful_access_token = "arn:aws:secretsmanager:us-east-2:368433847371:secret:ContentfulAccessToken-NIU3zI"
-secret_arn_contentful_space_id = "arn:aws:secretsmanager:us-east-2:368433847371:secret:ContentfulSpaceID-FXm2ED"
+secret_arn_contentful_access_token = "arn:aws:secretsmanager:us-east-2:271557913550:secret:ContentfulAccessToken-XQ85Q0"
+secret_arn_contentful_space_id = "arn:aws:secretsmanager:us-east-2:271557913550:secret:ContentfulSpaceID-68lFVR"
 
 # APP
 app_name        = "fast-react-static-renderer"
 app_environment = "build-dev"
-app_version     = "devops"
+app_version     = "latest"
 common_tags = {
   OperationsRepo = "bitovi/fast-react-static-renderer-operations"
   OperationsRepoEnvironment = "build-dev"
@@ -18,10 +18,10 @@ private_subnets    = ["10.10.0.0/24", "10.10.1.0/24"]
 
 # ECS
 # TODO: Replace with new image after created
-image_registry_url      =  "368433847371.dkr.ecr.us-west-2.amazonaws.com"
+image_registry_url      =  "271557913550.dkr.ecr.us-east-2.amazonaws.com"
 # TODO: Replace with new image after created
-image_registry_image    =  "ecom"
-image_registry_tag      =  "build-manager"
+image_registry_image    =  "fast-react-static-renderer-build-image"
+image_registry_tag      =  "dev"
 aws_region  = "us-east-2"
 s3_bucket_contents  = "fast-react-static-renderer-artifacts"
 publish_s3_bucket   = "fast-react-static-renderer-sites-dev"
@@ -29,4 +29,4 @@ build_output_subdirectory   = "out"
 # TODO: Dynamic
 cloudfront_distribution_id  = "EZQD6UR6P1GRP"
 build_manager_mode  = "1"
-catalog_url = "https://catalog.bitovi-tgif.com/menu.json"
+catalog_url = "https://catalog-dev.fast-react-static-renderer.com/"
