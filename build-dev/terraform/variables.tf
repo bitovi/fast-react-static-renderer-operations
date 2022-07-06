@@ -41,9 +41,10 @@ variable "private_subnets" {
 }
 
 # ECS
-# variable "image_registry_url" {
-#   description = "Base URL of the image registry"
-# }
+variable "image_registry_org" {
+  description = "Regestry organization name"
+}
+
 variable "image_registry_image" {
   description = "Registry image name"
 }
