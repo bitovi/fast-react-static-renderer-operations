@@ -8,7 +8,7 @@ resource "aws_ecs_task_definition" "build_task" {
   [
     {
       "name": "${var.app_name}-${var.app_environment}-container",
-      "image": "${var.image_registry_url}/${var.image_registry_image}:${var.image_registry_tag}",
+      "image": "${var.image_registry_image}:${var.image_registry_tag}",
       "entryPoint": [],
       "environment": [],
       "essential": true,
