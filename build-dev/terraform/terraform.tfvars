@@ -12,7 +12,7 @@ common_tags = {
 }
 
 # NETWORK
-availability_zones = ["us-east-2a","us-east-2b"]
+availability_zones = ["us-east-1a","us-east-1b"]
 public_subnets     = ["10.10.100.0/24", "10.10.101.0/24"]
 private_subnets    = ["10.10.0.0/24", "10.10.1.0/24"]
 
@@ -22,9 +22,9 @@ image_registry_url      =  "271557913550.dkr.ecr.us-east-2.amazonaws.com"
 # TODO: Replace with new image after created
 image_registry_image    =  "fast-react-static-renderer-build-image"
 image_registry_tag      =  "dev"
-aws_region  = "us-east-2"
-s3_bucket_contents  = "fast-react-static-renderer-artifacts"
-publish_s3_bucket   = "fast-react-static-renderer-sites-dev"
+aws_region  = "us-east-1"
+s3_bucket_contents  = "ya-fast-react-static-renderer-artifacts"
+publish_s3_bucket   = "ya-fast-react-static-renderer-sites-dev"
 build_output_subdirectory   = "out"
 # TODO: Dynamic
 cloudfront_distribution_id  = "EZQD6UR6P1GRP"
