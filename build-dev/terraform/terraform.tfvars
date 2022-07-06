@@ -18,7 +18,7 @@ private_subnets    = ["10.10.0.0/24", "10.10.1.0/24"]
 
 # ECS
 # TODO: Replace with new image after created
-image_registry_url      =  "registry.hub.docker.com"
+image_registry_url      =  ""
 # TODO: Replace with new image after created
 image_registry_image    =  "fast-react-static-renderer-build"
 image_registry_tag      =  "dev"
