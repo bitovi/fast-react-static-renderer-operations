@@ -18,9 +18,9 @@ private_subnets    = ["10.10.0.0/24", "10.10.1.0/24"]
 
 # ECS
 # TODO: Replace with new image after created
-image_registry_url      =  "271557913550.dkr.ecr.us-east-2.amazonaws.com"
+image_registry_url      =  "registry.hub.docker.com"
 # TODO: Replace with new image after created
-image_registry_image    =  "fast-react-static-renderer-build-image"
+image_registry_image    =  "fast-react-static-renderer-build"
 image_registry_tag      =  "dev"
 aws_region  = "us-east-2"
 s3_bucket_contents  = "fast-react-static-renderer-artifacts"
