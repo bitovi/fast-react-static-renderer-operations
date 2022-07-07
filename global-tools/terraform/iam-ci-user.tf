@@ -28,30 +28,29 @@ resource "aws_iam_policy" "s3" {
             "Action":[
                 "s3:ListBucket"
             ],
-            "Resource":"arn:aws:s3:::fast-react-static-renderer-sites-dev"
+            "Resource":"arn:aws:s3:::${var.hosting_bucket_name}"
         },
         {
             "Effect":"Allow",
             "Action": "s3:*Object",
-            "Resource":"arn:aws:s3:::fast-react-static-renderer-sites-dev/*"
+            "Resource":"arn:aws:s3:::${var.hosting_bucket_name}/*"
         },
         {
             "Effect":"Allow",
             "Action":[
                 "s3:ListBucket"
             ],
-            "Resource":"arn:aws:s3:::fast-react-static-renderer-artifacts"
+            "Resource":"arn:aws:s3:::${var.bucket_name}"
         },
         {
             "Effect":"Allow",
             "Action": "s3:*Object",
-            "Resource":"arn:aws:s3:::fast-react-static-renderer-artifacts/*"
+            "Resource":"arn:aws:s3:::${var.bucket_name}/*"
         }
     ]
 }
 EOF
 }
-
 
 resource "aws_iam_policy" "secrets" {
   name        = "frsr-iam-ci-user-policy"
