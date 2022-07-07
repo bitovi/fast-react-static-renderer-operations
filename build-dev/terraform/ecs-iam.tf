@@ -72,7 +72,7 @@ resource "aws_iam_policy" "ecs-runner" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "ecrRunnerPolicy",
+      "Sid": "ecsRunnerPolicy",
       "Action": [
         "ecs:RunTask",
         "ecs:DescribeTasks"
