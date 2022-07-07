@@ -19,7 +19,6 @@ resource "aws_iam_policy" "s3" {
   name        = "frsr-ci-user-s3"
   description = "policy for s3"
 
-
   policy = <<EOF
 {
     "Version": "2012-10-17",
@@ -47,32 +46,7 @@ resource "aws_iam_policy" "s3" {
             "Effect":"Allow",
             "Action": "s3:*Object",
             "Resource":"arn:aws:s3:::fast-react-static-renderer-artifacts/*"
-        },
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "ecr:GetRegistryPolicy",
-                "ecr:DescribeRegistry",
-                "ecr:DescribePullThroughCacheRules",
-                "ecr:GetAuthorizationToken",
-                "ecr:PutRegistryScanningConfiguration",
-                "ecr:DeleteRegistryPolicy",
-                "ecr:CreatePullThroughCacheRule",
-                "ecr:DeletePullThroughCacheRule",
-                "ecr:PutRegistryPolicy",
-                "ecr:GetRegistryScanningConfiguration",
-                "ecr:PutReplicationConfiguration"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "VisualEditor1",
-            "Effect": "Allow",
-            "Action": "ecr:*",
-            "Resource": "arn:aws:ecr:*:${data.aws_caller_identity.current.account_id}:repository/*"
         }
-        
     ]
 }
 EOF
