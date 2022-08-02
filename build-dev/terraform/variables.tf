@@ -70,6 +70,7 @@ variable "build_output_subdirectory" {
 
 variable "cloudfront_distribution_id" {
   description = "CLOUDFRONT_DISTRIBUTION_ID env var for react"
+  default = null
 }
 
 variable "build_manager_mode" {
@@ -78,4 +79,5 @@ variable "build_manager_mode" {
 
 variable "catalog_url" {
   description = "Catalog URL"
+  default = null
 }

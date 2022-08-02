@@ -15,7 +15,6 @@ resource "aws_s3_bucket" "s3_static_files" {
   cors_rule {
     allowed_headers = ["Authorization", "Content-Length"]
     allowed_methods = ["GET", "POST"]
-    # allowed_origins = ["https://www.${var.domain_name}"]
     allowed_origins = ["*"]
     max_age_seconds = 3000
   }

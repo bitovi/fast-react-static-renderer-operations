@@ -11,4 +11,5 @@ variable "hosting_bucket_name" {
 variable "domain_name" {
   type        = string
   description = "The domain name."
+  default     = null
 }

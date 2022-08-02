@@ -1,6 +1,7 @@
 
 
 resource "aws_route53_record" "root-react" {
+  count   = var.hosted_zone_id ? 1 : 0
   zone_id = var.hosted_zone_id
   name    = var.subdomain_name
   type    = "A"
