@@ -1,6 +1,6 @@
 # SSL Certificate
 resource "aws_acm_certificate" "ssl_certificate" {
-  count                     = var.domain_name == null ? 1 : 0
+  count                     = var.domain_name == null ? 0 : 1
   provider                  = aws.acm_provider
   domain_name               = var.domain_name
   subject_alternative_names = ["*.${var.domain_name}"]
@@ -31,5 +31,5 @@ resource "aws_acm_certificate_validation" "cert_validation" {
   count                   = var.domain_name == null ? 1 : 0
   provider                = aws.acm_provider
   certificate_arn         = aws_acm_certificate.ssl_certificate[0].arn
-  validation_record_fqdns = [aws_route53_record.cert_validation.fqdn]
+  validation_record_fqdns = [aws_route53_record.cert_validation[0].fqdn]
 }
