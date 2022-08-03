@@ -117,8 +117,6 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog_nodom" {
   # TODO: figure out if this removes the need for cloudfront function
   default_root_object = "pages.json"
 
-  aliases = [var.catalog_domain_name]
-
   custom_error_response {
     error_caching_min_ttl = 0
     error_code            = 404
