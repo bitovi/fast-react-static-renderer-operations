@@ -5,7 +5,8 @@ resource "aws_ecs_cluster" "aws-ecs-cluster" {
   })
 }
 resource "aws_cloudwatch_log_group" "log-group" {
-  name = "${var.app_name}-${var.app_environment}-logs"
+  # TODO: reset on merge to main
+  name = "${var.app_name}-${var.app_environment}-logs-nodom"
 
   tags = merge(var.common_tags,{
     Application = var.app_name
