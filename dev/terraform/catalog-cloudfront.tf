@@ -1,10 +1,10 @@
 ########################
 ## Cloudfront Catalog With Domain
 resource "aws_cloudfront_distribution" "cf_distribution_catalog" {
-  count = var.catalog_domain_name == null ? 1 : 0
+  count = var.catalog_domain_name == null ? 0 : 1
   # This points to s3
   origin {
-    domain_name = aws_s3_bucket.cf_distribution_catalog[0].bucket_regional_domain_name
+    domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
     origin_id   = aws_s3_bucket.s3_static_files.id
     custom_origin_config {
       http_port              = 80
@@ -30,7 +30,6 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog" {
     response_code         = 200
     response_page_path    = "/404.html"
   }
-
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -78,7 +77,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog" {
 
 # TODO: move to new file
 resource "null_resource" "s3_distribution_cache_catalog" {
-  count = var.catalog_domain_name == null ? 1 : 0
+  count = var.catalog_domain_name == null ? 0 : 1
   depends_on = [
     aws_cloudfront_distribution.cf_distribution_catalog[0]
   ]
@@ -97,7 +96,7 @@ resource "null_resource" "s3_distribution_cache_catalog" {
 ########################
 ## Cloudfront Catalog No Domain
 resource "aws_cloudfront_distribution" "cf_distribution_catalog_nodom" {
-  count = var.catalog_domain_name == null ? 0 : 1
+  count = var.catalog_domain_name == null ? 1 : 0
   # This points to s3
   origin {
     domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
@@ -174,7 +173,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog_nodom" {
 
 # TODO: move to new file
 resource "null_resource" "s3_distribution_cache_catalog_nodom" {
-  count = var.catalog_domain_name == null ? 0 : 1
+  count = var.catalog_domain_name == null ? 1 : 0
   depends_on = [
     aws_cloudfront_distribution.cf_distribution_catalog_nodom[0]
   ]
