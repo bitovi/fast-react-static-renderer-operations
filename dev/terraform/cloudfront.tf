@@ -73,11 +73,12 @@ resource "aws_cloudfront_distribution" "cf_distribution_nodom" {
     }
   }
 
-  viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate.ssl_certificate.arn
-    ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.1_2016"
-  }
+  # Commented out because no custom domain
+  # viewer_certificate {
+  #   acm_certificate_arn      = aws_acm_certificate.ssl_certificate[0].arn
+  #   ssl_support_method       = "sni-only"
+  #   minimum_protocol_version = "TLSv1.1_2016"
+  # }
 
   tags = {
     OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
@@ -171,7 +172,7 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate.ssl_certificate.arn
+    acm_certificate_arn      = aws_acm_certificate.ssl_certificate[0].arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }

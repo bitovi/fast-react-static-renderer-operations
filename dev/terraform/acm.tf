@@ -20,9 +20,9 @@ resource "aws_acm_certificate" "ssl_certificate" {
 resource "aws_route53_record" "cert_validation" {
   count           = var.hosted_zone_id == null ? 1 : 0
   allow_overwrite = true
-  name            = tolist(aws_acm_certificate.ssl_certificate.domain_validation_options)[0].resource_record_name
-  records         = [tolist(aws_acm_certificate.ssl_certificate.domain_validation_options)[0].resource_record_value]
-  type            = tolist(aws_acm_certificate.ssl_certificate.domain_validation_options)[0].resource_record_type
+  name            = tolist(aws_acm_certificate.ssl_certificate[0].domain_validation_options)[0].resource_record_name
+  records         = [tolist(aws_acm_certificate.ssl_certificate[0].domain_validation_options)[0].resource_record_value]
+  type            = tolist(aws_acm_certificate.ssl_certificate[0].domain_validation_options)[0].resource_record_type
   zone_id         = var.hosted_zone_id
   ttl             = 60
 }
@@ -30,6 +30,6 @@ resource "aws_route53_record" "cert_validation" {
 resource "aws_acm_certificate_validation" "cert_validation" {
   count                   = var.domain_name == null ? 1 : 0
   provider                = aws.acm_provider
-  certificate_arn         = aws_acm_certificate.ssl_certificate.arn
+  certificate_arn         = aws_acm_certificate.ssl_certificate[0].arn
   validation_record_fqdns = [aws_route53_record.cert_validation.fqdn]
 }

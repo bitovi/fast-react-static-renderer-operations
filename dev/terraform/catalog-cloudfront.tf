@@ -4,7 +4,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog" {
   count = var.catalog_domain_name == null ? 1 : 0
   # This points to s3
   origin {
-    domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
+    domain_name = aws_s3_bucket.cf_distribution_catalog[0].bucket_regional_domain_name
     origin_id   = aws_s3_bucket.s3_static_files.id
     custom_origin_config {
       http_port              = 80
@@ -65,7 +65,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate.ssl_certificate.arn
+    acm_certificate_arn      = aws_acm_certificate.ssl_certificate[0].arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }
@@ -161,7 +161,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog_nodom" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate.ssl_certificate.arn
+    acm_certificate_arn      = aws_acm_certificate.ssl_certificate[0].arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016"
   }
