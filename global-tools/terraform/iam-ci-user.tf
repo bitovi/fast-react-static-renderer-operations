@@ -2,7 +2,8 @@
 data "aws_caller_identity" "current" {}
 
 resource "aws_iam_user" "this" {
-  name          = "frsr-ci-user"
+  # TODO: reset on merge to main
+  name          = "frsr-ci-user-nodom"
   force_destroy = true
   tags = {
     OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
