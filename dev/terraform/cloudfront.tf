@@ -31,8 +31,6 @@ resource "aws_cloudfront_distribution" "cf_distribution_nodom" {
   # TODO: figure out if this removes the need for cloudfront function
   default_root_object = "index.html"
 
-  aliases = [var.subdomain_name]
-
   custom_error_response {
     error_caching_min_ttl = 0
     error_code            = 404
@@ -73,7 +71,6 @@ resource "aws_cloudfront_distribution" "cf_distribution_nodom" {
     }
   }
 
-  # Commented out because no custom domain
   viewer_certificate {
     cloudfront_default_certificate = true
   }

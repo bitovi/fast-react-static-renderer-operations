@@ -160,9 +160,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog_nodom" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate.ssl_certificate[0].arn
-    ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1.1_2016"
+    cloudfront_default_certificate = true
   }
 
   tags = {
