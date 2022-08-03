@@ -10,7 +10,7 @@ resource "aws_cloudfront_function" "rewrite_uri_react" {
 ########################
 ## Cloudfront No Domain
 resource "aws_cloudfront_distribution" "cf_distribution_nodom" {
-  count = var.subdomain_name ? 0 : 1
+  count = var.subdomain_name == null ? 0 : 1
   # This points to s3
   origin {
     domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
@@ -87,7 +87,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_nodom" {
 
 # TODO: move to new file
 resource "null_resource" "s3_distribution_cache" {
-  count = var.subdomain_name ? 0 : 1
+  count = var.subdomain_name == null ? 0 : 1
   depends_on = [
     aws_cloudfront_distribution.cf_distribution_nodom[0]
   ]
@@ -107,7 +107,7 @@ resource "null_resource" "s3_distribution_cache" {
 ########################
 ## Cloudfront With Domain
 resource "aws_cloudfront_distribution" "cf_distribution" {
-  count = var.subdomain_name ? 1 : 0
+  count = var.subdomain_name == null ? 1 : 0
   # This points to s3
   origin {
     domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
@@ -184,7 +184,7 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
 
 # TODO: move to new file
 resource "null_resource" "s3_distribution_cache" {
-  count = var.subdomain_name ? 1 : 0
+  count = var.subdomain_name == null ? 1 : 0
   depends_on = [
     aws_cloudfront_distribution.cf_distribution[0]
   ]

@@ -1,7 +1,7 @@
 ########################
 ## Cloudfront Catalog With Domain
 resource "aws_cloudfront_distribution" "cf_distribution_catalog" {
-  count = var.catalog_domain_name ? 1 : 0
+  count = var.catalog_domain_name == null ? 1 : 0
   # This points to s3
   origin {
     domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
@@ -78,7 +78,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog" {
 
 # TODO: move to new file
 resource "null_resource" "s3_distribution_cache_catalog" {
-  count = var.catalog_domain_name ? 1 : 0
+  count = var.catalog_domain_name == null ? 1 : 0
   depends_on = [
     aws_cloudfront_distribution.cf_distribution_catalog[0]
   ]
@@ -97,7 +97,7 @@ resource "null_resource" "s3_distribution_cache_catalog" {
 ########################
 ## Cloudfront Catalog No Domain
 resource "aws_cloudfront_distribution" "cf_distribution_catalog_nodom" {
-  count = var.catalog_domain_name ? 0 : 1
+  count = var.catalog_domain_name == null ? 0 : 1
   # This points to s3
   origin {
     domain_name = aws_s3_bucket.s3_static_files.bucket_regional_domain_name
@@ -174,7 +174,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_catalog_nodom" {
 
 # TODO: move to new file
 resource "null_resource" "s3_distribution_cache_catalog_nodom" {
-  count = var.catalog_domain_name ? 0 : 1
+  count = var.catalog_domain_name == null ? 0 : 1
   depends_on = [
     aws_cloudfront_distribution.cf_distribution_catalog_nodom[0]
   ]
