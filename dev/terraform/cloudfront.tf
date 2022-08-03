@@ -86,7 +86,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_nodom" {
 }
 
 # TODO: move to new file
-resource "null_resource" "s3_distribution_cache" {
+resource "null_resource" "s3_distribution_cache_nodom" {
   count = var.subdomain_name == null ? 0 : 1
   depends_on = [
     aws_cloudfront_distribution.cf_distribution_nodom[0]
