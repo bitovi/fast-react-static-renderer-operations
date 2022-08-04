@@ -6,19 +6,23 @@ variable "bucket_name" {
 variable "domain_name" {
   type        = string
   description = "The domain name."
+  default     = null
 }
 
 variable "subdomain_name" {
-  type = string
+  type        = string
   description = "Subdomain that will be used for hosted env"
+  default     = null
 }
 
 variable "catalog_domain_name" {
-  type = string
+  type        = string
   description = "Subdomain that will be used for hosted env catalog"
+  default     = null
 }
 
 variable "hosted_zone_id" {
-  type = string
+  type        = string
   description = "Hostedzone ID created in global-tools for domain name"
+  default     = null
 }

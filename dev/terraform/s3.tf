@@ -1,7 +1,7 @@
 # This is the s3 bucket that will house the static sites
 resource "aws_s3_bucket" "s3_static_files" {
-  bucket                  = var.bucket_name
-  acl                     = "public-read"
+  bucket  = var.bucket_name
+  acl     = "public-read"
 
   policy = templatefile("templates/s3-policy.json", { bucket = var.bucket_name })
   tags = {
@@ -15,7 +15,6 @@ resource "aws_s3_bucket" "s3_static_files" {
   cors_rule {
     allowed_headers = ["Authorization", "Content-Length"]
     allowed_methods = ["GET", "POST"]
-    # allowed_origins = ["https://www.${var.domain_name}"]
     allowed_origins = ["*"]
     max_age_seconds = 3000
   }
