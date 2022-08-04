@@ -1,8 +1,7 @@
 # Cloudfront S3 for redirect slashes
 # https://advancedweb.hu/how-to-use-cloudfront-functions-to-change-the-origin-request-path/
 resource "aws_cloudfront_function" "rewrite_uri_react" {
-  # TODO: reset on merge to main
-  name    = "rewrite-request-react-nodom"
+  name    = "rewrite-request-react"
   runtime = "cloudfront-js-1.0"
   publish = true
   code    = file("${path.module}/js-rewrite/cf-url-rewrite.js")

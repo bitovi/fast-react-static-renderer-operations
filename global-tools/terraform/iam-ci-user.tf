@@ -2,8 +2,7 @@
 data "aws_caller_identity" "current" {}
 
 resource "aws_iam_user" "this" {
-  # TODO: reset on merge to main
-  name          = "frsr-ci-user-nodom"
+  name          = "frsr-ci-user"
   force_destroy = true
   tags = {
     OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
@@ -17,8 +16,7 @@ resource "aws_iam_access_key" "v0" {
 
 #policy
 resource "aws_iam_policy" "s3" {
-  # TODO: reset on merge to main
-  name        = "frsr-ci-user-s3-nodom"
+  name        = "frsr-ci-user-s3"
   description = "policy for s3"
 
   policy = <<EOF
@@ -55,8 +53,7 @@ EOF
 }
 
 resource "aws_iam_policy" "secrets" {
-  # TODO: reset on merge to main
-  name        = "frsr-iam-ci-user-policy-nodom"
+  name        = "frsr-iam-ci-user-policy"
   description = "frsr-iam-ci-user-policy"
   policy      = <<EOF
 {

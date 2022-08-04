@@ -1,8 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 resource "aws_iam_role" "ecsTaskExecutionRole" {
-  # TODO: reset on merge to main
-  name               = "${var.app_name}-execution-task-role-nodom"
+  name               = "${var.app_name}-execution-task-role"
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
   tags = merge(var.common_tags,{
     Name        = "${var.app_name}-iam-role"
@@ -34,8 +33,7 @@ resource "aws_iam_role_policy_attachment" "build_ci_user_policy" {
 
 # attach a policy to invalidate the cloudfront cache
 resource "aws_iam_policy" "cloudfront" {
-  # TODO: reset on merge to main
-  name = "${var.app_name}-build-dev-cloudfront-invalidation-nodom"
+  name = "${var.app_name}-build-dev-cloudfront-invalidation"
 
   # angular
   # "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/E34450W1O9P7SH",
@@ -68,8 +66,7 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
 
 # attach a policy to run sub-build tasks
 resource "aws_iam_policy" "ecs-runner" {
-  # TODO: reset on merge to main
-  name = "${var.app_name}-build-dev-ecs-runner-nodom"
+  name = "${var.app_name}-build-dev-ecs-runner"
   policy = <<EOF
 {
   "Version": "2012-10-17",

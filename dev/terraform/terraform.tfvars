@@ -1,4 +1,4 @@
-bucket_name = "fast-react-static-renderer-sites-dev-nodom"
+bucket_name = "fast-react-static-renderer-sites-dev"
 # hosted_zone_id = "Z09768261LFU7OL6902KA"
 
 # Domains
