@@ -76,7 +76,7 @@ locals {
         "value": "${var.cloudfront_distribution_id}"
       },{
         "name" : "PAGE_DATA",
-        "value" : "[]"
+        "value" : ""
       }, {
         "name": "BUILD_MANAGER_MODE",
         "value": "${var.build_manager_mode}"
