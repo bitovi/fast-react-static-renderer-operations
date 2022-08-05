@@ -1,3 +1,4 @@
+# REQUIRED PARAMITERS
 # CONTENTFUL secrets
 secret_arn_contentful_access_token = "arn:aws:secretsmanager:us-east-2:271557913550:secret:ContentfulAccessToken-XQ85Q0"
 secret_arn_contentful_space_id = "arn:aws:secretsmanager:us-east-2:271557913550:secret:ContentfulSpaceID-68lFVR"
@@ -29,4 +30,6 @@ publish_s3_bucket   = "fast-react-static-renderer-sites-dev"
 build_output_subdirectory   = "out"
 cloudfront_distribution_id  = "EZQD6UR6P1GRP"
 build_manager_mode  = "1"
+
+# OPTIONAL PARAMITERS
 catalog_url = "https://catalog-dev.fast-react-static-renderer.com/"
