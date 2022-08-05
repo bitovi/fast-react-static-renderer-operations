@@ -28,6 +28,6 @@ s3_bucket_contents  = "fast-react-static-renderer-artifacts"
 publish_s3_bucket   = "fast-react-static-renderer-sites-dev"
 build_output_subdirectory   = "out"
 # TODO: Dynamic
-cloudfront_distribution_id  = "EZQD6UR6P1GRP"
+cloudfront_distribution_id  = "E8HJ3LVDJAH2U"
 build_manager_mode  = "1"
 catalog_url = "https://catalog-dev.fast-react-static-renderer.com/"
