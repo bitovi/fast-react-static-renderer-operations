@@ -26,6 +26,10 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
         AWS_DEFAULT_REGION: us-east-2
         TF_STATE_BUCKET: fast-react-static-renderer-operations-global-tools-state
+
+        # THIS NEEDS TO BE CHANGED IF YOU FORKED THE REPO!
+        # Remove if you want to use github actions and you want a domain-less deployment
+        TFVARS_AUTO_JSON: '{"domain_name": "fast-react-static-renderer.com"}'
       run: |
         echo "running  _scripts/deploy/deploy.sh"
         ./_scripts/deploy/deploy.sh

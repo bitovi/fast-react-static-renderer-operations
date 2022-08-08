@@ -14,7 +14,7 @@ variable "domain_name" {
   default     = null
 }
 variable "common_tags" {
-  type        = object
+  type        = any
   description = "[OPTIONAL] common tags to apply to all resources"
   default     = null
 }
