@@ -13,3 +13,8 @@ variable "domain_name" {
   description = "[OPTIONAL] The domain name."
   default     = null
 }
+variable "common_tags" {
+  type        = object
+  description = "[OPTIONAL] common tags to apply to all resources"
+  default     = null
+}

@@ -4,12 +4,9 @@ resource "aws_s3_bucket" "s3_static_files" {
   acl                     = "public-read"
 
   policy = templatefile("templates/s3-policy.json", { bucket = var.bucket_name })
-  tags = {
+  tags = merge(var.common_tags,{
     Name                      = var.bucket_name
-    terraform                 = "true"
-    OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
-    OperationsRepoEnvironment = "global-tools"
-  }
+  })
 
   # Depricated warning; https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_cors_configuration
   cors_rule {
