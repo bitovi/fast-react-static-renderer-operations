@@ -74,5 +74,6 @@ variable "cloudfront_distribution_id" {
 }
 
 variable "build_manager_mode" {
-  description = "[REQUIRED] BUILD_MANAGER_MODE env var for build container."
+  description = "[OPTIONAL] BUILD_MANAGER_MODE env var for build container."
+  default = "1"
 }
