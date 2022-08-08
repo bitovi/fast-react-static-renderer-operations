@@ -1,4 +1,8 @@
 #!/bin/bash
 
 echo "Creating TF Auto vars from env var (TFVARS_AUTO_JSON): $TFVARS_AUTO_JSON"
-echo $TFVARS_AUTO_JSON > $TERRAFORM_ROOT/vars.auto.tfvars.json
+AUTO_VARS_FILE="$TERRAFORM_ROOT/vars.auto.tfvars.json"
+echo $TFVARS_AUTO_JSON > $AUTO_VARS_FILE
+
+echo "File contents for $AUTO_VARS_FILE"
+cat $AUTO_VARS_FILE

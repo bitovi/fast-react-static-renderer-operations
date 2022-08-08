@@ -45,6 +45,7 @@ docker run --rm --name bitops \
 -e PROVIDERS="$PROVIDERS" \
 -e DEFAULT_FOLDER_NAME="_default" \
 -e HELM_S3_REGION="${HELM_S3_REGION}" \
+-e TFVARS_AUTO_JSON="${TFVARS_AUTO_JSON}" \
 -v $(echo $REPO_PATH):/opt/bitops_deployment \
 $ADDITIONAL_MOUNT_STRING \
 bitovi/bitops:v1.0.13
