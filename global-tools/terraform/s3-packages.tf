@@ -1,11 +1,11 @@
 # This is the s3 bucket that will house the static sites
 resource "aws_s3_bucket" "s3_static_files" {
-  bucket                  = var.bucket_name
+  bucket                  = var.artifact_bucket_name
   acl                     = "public-read"
 
-  policy = templatefile("templates/s3-policy.json", { bucket = var.bucket_name })
+  policy = templatefile("templates/s3-policy.json", { bucket = var.artifact_bucket_name })
   tags = {
-    Name                      = var.bucket_name
+    Name                      = var.artifact_bucket_name
     terraform                 = "true"
     OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
     OperationsRepoEnvironment = "global-tools"
