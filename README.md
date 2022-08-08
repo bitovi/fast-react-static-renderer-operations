@@ -15,11 +15,6 @@
 
 `hosted_zone_id` - Hosted Zone id. Created from `global-tools/terraform/route53-zone.tf` when `global-tools/terraform/terraform.tfvars` -> `domain_name` is set
 
-`catalog_domain_name` - Domain name for CloudFront, used to obtain catalog items.
-
-#### `build-dev/terraform/terraform.tfvars`
-`catalog_url` - URL will be provided to [build image](https://github.com/bitovi/fast-react-static-renderer-build-image) at build time to retreive catalog items.
-
 ---
 ### No Custom Domain Name
 **The CloudFront default domain name should be used to access the application if the above optional parameters are omitted.**

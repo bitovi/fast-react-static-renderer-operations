@@ -19,9 +19,3 @@ variable "subdomain_name" {
   description = "[OPTIONAL] Subdomain that will be used for hosted env"
   default     = null
 }
-
-variable "catalog_domain_name" {
-  type        = string
-  description = "[OPTIONAL] Subdomain that will be used for hosted env catalog"
-  default     = null
-}
