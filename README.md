@@ -13,6 +13,8 @@
 
 `subdomain_name` - Domain name for CloudFront, will be the primary domain for end users to access the application.
 
+`hosted_zone_id` - Hosted Zone id. Created from `global-tools/terraform/route53-zone.tf` when `global-tools/terraform/terraform.tfvars` -> `domain_name` is set
+
 `catalog_domain_name` - Domain name for CloudFront, used to obtain catalog items.
 
 #### `build-dev/terraform/terraform.tfvars`
