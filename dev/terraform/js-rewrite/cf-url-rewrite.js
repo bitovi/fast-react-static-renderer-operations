@@ -38,10 +38,14 @@
 
   // if the path has no slash
   // or if the path ends with extension
-  // or if the path ends with a slash
   //   do not modify
-  if (pathHasNoSlash || pathEndsWithExtension || pathEndsWithSlash){
+  if (pathHasNoSlash || pathEndsWithExtension){
     return uri;
+  }
+
+  //if path ends with slash, append index.html
+  if(pathEndsWithSlash){
+    return `${uri}index.html`
   }
   
   //otherwise, append `/index.html`
