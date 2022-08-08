@@ -40,12 +40,12 @@ resource "aws_iam_policy" "s3" {
             "Action":[
                 "s3:ListBucket"
             ],
-            "Resource":"arn:aws:s3:::${var.bucket_name}"
+            "Resource":"arn:aws:s3:::${var.artifact_bucket_name}"
         },
         {
             "Effect":"Allow",
             "Action": "s3:*Object",
-            "Resource":"arn:aws:s3:::${var.bucket_name}/*"
+            "Resource":"arn:aws:s3:::${var.artifact_bucket_name}/*"
         }
     ]
 }
