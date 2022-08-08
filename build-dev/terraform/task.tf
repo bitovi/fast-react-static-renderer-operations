@@ -81,9 +81,6 @@ locals {
         "name": "BUILD_MANAGER_MODE",
         "value": "${var.build_manager_mode}"
       },{
-        "name": "CATALOG_URL",
-        "value": "${var.catalog_url}"
-      },{
         "name": "CONTAINER_OVERRIDE_NAME",
         "value": "${var.app_name}-${var.app_environment}-container"
       },{
