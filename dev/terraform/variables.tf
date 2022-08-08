@@ -19,3 +19,9 @@ variable "subdomain_name" {
   description = "[OPTIONAL] Subdomain that will be used for hosted env"
   default     = null
 }
+
+variable "common_tags" {
+  type        = any
+  description = "[OPTIONAL] common tags to apply to all resources"
+  default     = null
+}

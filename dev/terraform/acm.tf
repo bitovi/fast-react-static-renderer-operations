@@ -7,10 +7,7 @@ resource "aws_acm_certificate" "ssl_certificate" {
   # validation_method         = "EMAIL"
   validation_method = "DNS"
 
-  tags = {
-    OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
-    OperationsRepoEnvironment = "dev"
-  }
+  tags = var.common_tags
 
   lifecycle {
     create_before_destroy = true

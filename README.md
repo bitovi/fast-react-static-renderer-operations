@@ -5,6 +5,10 @@
 ### Custom Domain Name
 **If you want the application deployed with a custom domain name, you must provide the following optional parameters.**
 
+> In an effort to keep the terraform clean and reusable, the domain-specific logic that powers the `fast-react-static-renderer.com` (which is driven from this repo) has been moved to the pipelines.  The GitHub Actions pipelins specify an environment variable called `TFVARS_AUTO_JSON` which is then converted to a `vars.auto.tfvars.json` file by a BitOps before script.
+> 
+> If you fork this repo, you'll need to take care in your pipelines to ensure you are working with domains as you'd expect.
+
 #### `global-tools/terraform/terraform.tfvars`
 `domain_name` - Provide the root/apex domain name to create a Route53 hosted zone.
 

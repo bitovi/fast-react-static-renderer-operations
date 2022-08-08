@@ -75,10 +75,7 @@ resource "aws_cloudfront_distribution" "cf_distribution_nodom" {
     cloudfront_default_certificate = true
   }
 
-  tags = {
-    OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
-    OperationsRepoEnvironment = "dev"
-  }
+  tags = var.common_tags
 }
 
 # TODO: move to new file
@@ -172,10 +169,7 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
     minimum_protocol_version = "TLSv1.1_2016"
   }
 
-  tags = {
-    OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
-    OperationsRepoEnvironment = "dev"
-  }
+  tags = var.common_tags
 }
 
 # TODO: move to new file
