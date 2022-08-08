@@ -1,6 +1,6 @@
-echo "Creating Bucket: $TF_STATE_BUCKET"
-
 #!/bin/bash
+
+echo "Creating Bucket: $TF_STATE_BUCKET"
 if [ "$AWS_DEFAULT_REGION" == "us-east-1" ]; then
   aws s3api create-bucket --bucket $TF_STATE_BUCKET --region $AWS_DEFAULT_REGION || true
 else
