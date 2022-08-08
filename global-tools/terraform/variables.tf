@@ -1,4 +1,4 @@
-variable "bucket_name" {
+variable "artifact_bucket_name" {
   type        = string
   description = "[REQUIRED] The name of the bucket without the www. prefix. Normally domain_name."
 }
