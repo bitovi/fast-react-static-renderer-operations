@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "import already performed - can now remove this file"
+exit 0
+
 BUCKET="fast-react-static-renderer-artifacts"
 echo "Taking ownership of bucket: $BUCKET"
 
