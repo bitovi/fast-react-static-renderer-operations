@@ -1,6 +1,6 @@
 # REQUIRED PARAMITERS
 # S3
-artifact_bucket_name = "fast-react-static-renderer-artifacts"
+bucket_name = "fast-react-static-renderer-artifacts"
 hosting_bucket_name = "fast-react-static-renderer-sites-dev"
 
 # OPTIONAL PARAMITERS
