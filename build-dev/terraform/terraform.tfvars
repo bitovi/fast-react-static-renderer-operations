@@ -6,7 +6,10 @@ secret_arn_contentful_space_id = "arn:aws:secretsmanager:us-east-2:271557913550:
 # APP
 app_name        = "fast-react-static-renderer"
 app_environment = "build-dev"
-app_version     = "latest"
+# TODO: remove before merge
+app_version     = "fetch-script-fix2"
+# TODO: uncomment before merge
+# app_version     = "latest"
 common_tags = {
   OperationsRepo = "bitovi/fast-react-static-renderer-operations"
   OperationsRepoEnvironment = "build-dev"
@@ -18,9 +21,6 @@ public_subnets     = ["10.10.100.0/24", "10.10.101.0/24"]
 private_subnets    = ["10.10.0.0/24", "10.10.1.0/24"]
 
 # ECS
-# TODO: Replace with new image after created
-# image_registry_url      =  ""
-# TODO: Replace with new image after created
 image_registry_org      =  "bitovi"
 image_registry_image    =  "fast-react-static-renderer-build"
 image_registry_tag      =  "fetch-script"
