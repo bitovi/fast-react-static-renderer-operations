@@ -89,3 +89,9 @@ variable "build_manager_pages_per_container" {
   description = "[OPTIONAL] PAGES_PER_CONTAINER env var for build container (how many pages per child container)."
   default = "3"
 }
+
+# Benchmarking vars
+variable "benchmarking_num_pages" {
+  description = "[OPTIONAL] NUMBER_OF_PAGES env var for build containers (how many pages to build)."
+  default = "3"
+}

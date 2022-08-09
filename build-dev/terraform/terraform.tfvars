@@ -6,7 +6,10 @@ secret_arn_contentful_space_id = "arn:aws:secretsmanager:us-east-2:271557913550:
 # APP
 app_name        = "fast-react-static-renderer"
 app_environment = "build-dev"
-app_version     = "latest"
+# TODO: remove before merge
+app_version     = "benchmarking"
+# TODO: uncomment before merge
+# app_version     = "benchmarking"
 common_tags = {
   OperationsRepo = "bitovi/fast-react-static-renderer-operations"
   OperationsRepoEnvironment = "build-dev"
@@ -33,3 +36,6 @@ build_manager_mode  = "1"
 build_manager_retry_sleep = "1"
 build_manager_retry_limit = "15"
 build_manager_pages_per_container = "3"
+
+# Benchmarking config
+benchmarking_num_pages = 10
