@@ -32,7 +32,7 @@ cloudfront_distribution_id  = "E2633P2JNWSIZ6"
 build_manager_mode  = "1"
 build_manager_retry_sleep = "1"
 build_manager_retry_limit = "15"
-build_manager_pages_per_container = "50"
+build_manager_pages_per_container = "600"
 
 # Benchmarking config
-benchmarking_num_pages = "5000"
+benchmarking_num_pages = "56000"
