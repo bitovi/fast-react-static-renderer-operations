@@ -38,4 +38,4 @@ build_manager_retry_limit = "15"
 build_manager_pages_per_container = "3"
 
 # Benchmarking config
-benchmarking_num_pages = 10
+benchmarking_num_pages = "10"
