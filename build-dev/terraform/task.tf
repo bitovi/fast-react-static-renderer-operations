@@ -81,8 +81,14 @@ locals {
         "name": "BUILD_MANAGER_MODE",
         "value": "${var.build_manager_mode}"
       },{
-        "name": "CATALOG_URL",
-        "value": "${var.catalog_url}"
+        "name": "RETRY_SLEEP",
+        "value": "${var.build_manager_retry_sleep}"
+      },{
+        "name": "RETRY_LIMIT",
+        "value": "${var.build_manager_retry_limit}"
+      },{
+        "name": "PAGES_PER_CONTAINER",
+        "value": "${var.build_manager_pages_per_container}"
       },{
         "name": "CONTAINER_OVERRIDE_NAME",
         "value": "${var.app_name}-${var.app_environment}-container"

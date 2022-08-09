@@ -4,10 +4,7 @@ data "aws_caller_identity" "current" {}
 resource "aws_iam_user" "this" {
   name          = "frsr-ci-user"
   force_destroy = true
-  tags = {
-    OperationsRepo            = "bitovi/fast-react-static-renderer-operations"
-    OperationsRepoEnvironment = "global-tools"
-  }
+  tags = var.common_tags
 }
 
 resource "aws_iam_access_key" "v0" {

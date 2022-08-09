@@ -2,10 +2,10 @@
 
 resource "aws_internet_gateway" "aws-igw" {
   vpc_id = aws_vpc.build_dev.id
-  tags = {
+  tags = merge(var.common_tags,{
     Name        = "${var.app_name}-igw"
     Environment = var.app_environment
-  }
+  })
 
 }
 

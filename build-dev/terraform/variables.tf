@@ -1,81 +1,91 @@
 # CONTENTFUL secrets
 variable "secret_arn_contentful_access_token" {
-  description = "ARN for the contentful access token"
+  description = "[REQUIRED] ARN for the contentful access token"
 }
 
 variable "secret_arn_contentful_space_id" {
-  description = "ARN for the contentful space id"
+  description = "[REQUIRED] ARN for the contentful space id"
 }
 
 # APP
 variable "app_name" {
   type        = string
-  description = "Application Name"
+  description = "[REQUIRED] Application Name"
 }
 
 variable "app_environment" {
   type        = string
-  description = "Application Environment"
+  description = "[REQUIRED] Application Environment"
 }
 
 variable "app_version" {
   type        = string
-  description = "Application Version"
+  description = "[REQUIRED] Application Version"
 }
 
 variable "common_tags" {
-  description = "Common tags you want applied to all components."
+  description = "[REQUIRED] Common tags you want applied to all components."
 }
 
 # NETWORKING
 variable "availability_zones" {
-  description = "List of availability zones"
+  description = "[REQUIRED] List of availability zones"
 }
 
 variable "public_subnets" {
-  description = "List of public subnets"
+  description = "[REQUIRED] List of public subnets"
 }
 
 variable "private_subnets" {
-  description = "List of private subnets"
+  description = "[REQUIRED] List of private subnets"
 }
 
 # ECS
 variable "image_registry_org" {
-  description = "Regestry organization name"
+  description = "[REQUIRED] Regestry organization name"
 }
 
 variable "image_registry_image" {
-  description = "Registry image name"
+  description = "[REQUIRED] Registry image name"
 }
 variable "image_registry_tag" {
-  description = "Registry image tag"
+  description = "[REQUIRED] Registry image tag"
 }
 
 variable "aws_region" {
-  description = "AWS Region"
+  description = "[REQUIRED] AWS Region"
 }
 
 variable "s3_bucket_contents" {
-  description = "S3_BUCKET_CONTENTS env var for react"
+  description = "[REQUIRED] S3_BUCKET_CONTENTS env var for react"
 }
 
 variable "publish_s3_bucket" {
-  description = "PUBLISH_S3_BUCKET env var for react"
+  description = "[REQUIRED] PUBLISH_S3_BUCKET env var for react"
 }
 
 variable "build_output_subdirectory" {
-  description = "BUILD_OUTPUT_SUBDIRECTORY env var for react"
+  description = "[REQUIRED] BUILD_OUTPUT_SUBDIRECTORY env var for react"
 }
 
 variable "cloudfront_distribution_id" {
-  description = "CLOUDFRONT_DISTRIBUTION_ID env var for react"
+  description = "[REQUIRED] CLOUDFRONT_DISTRIBUTION_ID env var for react"
+  default = null
 }
 
 variable "build_manager_mode" {
-  description = "BUILD_MANAGER_MODE env var for build container."
+  description = "[OPTIONAL] BUILD_MANAGER_MODE env var for build container."
+  default = "1"
 }
-
-variable "catalog_url" {
-  description = "Catalog URL"
+variable "build_manager_retry_sleep" {
+  description = "[OPTIONAL] RETRY_SLEEP env var for build container (time to sleep in minutes)."
+  default = "2"
+}
+variable "build_manager_retry_limit" {
+  description = "[OPTIONAL] RETRY_LIMIT env var for build container (how many times to check on status of child containers)."
+  default = "20"
+}
+variable "build_manager_pages_per_container" {
+  description = "[OPTIONAL] PAGES_PER_CONTAINER env var for build container (how many pages per child container)."
+  default = "3"
 }

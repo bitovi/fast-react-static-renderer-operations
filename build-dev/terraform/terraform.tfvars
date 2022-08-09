@@ -1,3 +1,4 @@
+# REQUIRED PARAMITERS
 # CONTENTFUL secrets
 secret_arn_contentful_access_token = "arn:aws:secretsmanager:us-east-2:271557913550:secret:ContentfulAccessToken-XQ85Q0"
 secret_arn_contentful_space_id = "arn:aws:secretsmanager:us-east-2:271557913550:secret:ContentfulSpaceID-68lFVR"
@@ -17,17 +18,18 @@ public_subnets     = ["10.10.100.0/24", "10.10.101.0/24"]
 private_subnets    = ["10.10.0.0/24", "10.10.1.0/24"]
 
 # ECS
-# TODO: Replace with new image after created
-# image_registry_url      =  ""
-# TODO: Replace with new image after created
 image_registry_org      =  "bitovi"
 image_registry_image    =  "fast-react-static-renderer-build"
-image_registry_tag      =  "dev"
+image_registry_tag      =  "latest"
 aws_region  = "us-east-2"
 s3_bucket_contents  = "fast-react-static-renderer-artifacts"
 publish_s3_bucket   = "fast-react-static-renderer-sites-dev"
 build_output_subdirectory   = "out"
 # TODO: Dynamic
-cloudfront_distribution_id  = "E8HJ3LVDJAH2U"
+cloudfront_distribution_id  = "E2633P2JNWSIZ6"
+
+# Build manager config
 build_manager_mode  = "1"
-catalog_url = "https://catalog-dev.fast-react-static-renderer.com/"
+build_manager_retry_sleep = "1"
+build_manager_retry_limit = "15"
+build_manager_pages_per_container = "3"
