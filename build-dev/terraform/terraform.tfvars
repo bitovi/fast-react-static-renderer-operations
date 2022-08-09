@@ -25,7 +25,7 @@ aws_region  = "us-east-2"
 s3_bucket_contents  = "fast-react-static-renderer-artifacts"
 publish_s3_bucket   = "fast-react-static-renderer-sites-dev"
 build_output_subdirectory   = "out"
-cloudfront_distribution_id  = "EZQD6UR6P1GRP"
+cloudfront_distribution_id  = "E2633P2JNWSIZ6"
 
 # Build manager config
 build_manager_mode  = "1"
