@@ -2,10 +2,7 @@ name: Deploy global-tools
 
 on:
   push:
-    # TODO: remove before merge
-    branches: [ optional-domain ]
-    # TODO: uncomment before merge
-    # branches: [ main ]
+    branches: [ main ]
     paths:
       - "global-tools/*"
       - "global-tools/**/*"
