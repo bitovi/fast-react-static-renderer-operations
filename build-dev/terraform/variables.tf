@@ -77,3 +77,15 @@ variable "build_manager_mode" {
   description = "[OPTIONAL] BUILD_MANAGER_MODE env var for build container."
   default = "1"
 }
+variable "build_manager_retry_sleep" {
+  description = "[OPTIONAL] RETRY_SLEEP env var for build container (time to sleep in minutes)."
+  default = "2"
+}
+variable "build_manager_retry_limit" {
+  description = "[OPTIONAL] RETRY_LIMIT env var for build container (how many times to check on status of child containers)."
+  default = "20"
+}
+variable "build_manager_pages_per_container" {
+  description = "[OPTIONAL] PAGES_PER_CONTAINER env var for build container (how many pages per child container)."
+  default = "3"
+}

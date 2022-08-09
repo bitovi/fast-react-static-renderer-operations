@@ -29,4 +29,9 @@ s3_bucket_contents  = "fast-react-static-renderer-artifacts"
 publish_s3_bucket   = "fast-react-static-renderer-sites-dev"
 build_output_subdirectory   = "out"
 cloudfront_distribution_id  = "EZQD6UR6P1GRP"
+
+# Build manager config
 build_manager_mode  = "1"
+build_manager_retry_sleep = "1"
+build_manager_retry_limit = "15"
+build_manager_pages_per_container = "3"
