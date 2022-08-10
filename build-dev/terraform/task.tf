@@ -85,7 +85,7 @@ resource "aws_ecs_task_definition" "build_task" {
 locals {
   task_overrides = jsonencode({
     "containerOverrides": [{
-      "name": "${var.app_name}-${var.app_environment}-container",
+      "name": "${var.app_name}-${var.app_environment}-buildmanager",
       "environment": [{
         "name": "APP_VERSION",
         "value": "${var.app_version}"
