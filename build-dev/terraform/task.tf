@@ -47,6 +47,11 @@ locals {
   task_overrides = jsonencode({
     "containerOverrides": [{
       "name": "${var.app_name}-${var.app_environment}-container",
+      "logConfiguration": {
+        "options": {
+          "awslogs-stream-prefix": "build-manager"
+        }
+      },
       "environment": [{
         "name": "APP_VERSION",
         "value": "${var.app_version}"
