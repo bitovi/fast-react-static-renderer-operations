@@ -1,13 +1,18 @@
-# TODO: move to its own ops repo env
-# TODO: output link to CloudWatch log stream for manager task
+resource "aws_cloudwatch_log_group" "log-group" {
+  name = "${var.app_name}-${var.app_environment}-logs"
 
-resource "aws_ecs_task_definition" "build_task" {
-  family = "${var.app_name}-task"
+  tags = merge(var.common_tags,{
+    Application = var.app_name
+  })
+}
+
+resource "aws_ecs_task_definition" "build_manager_task" {
+  family = "${var.app_name}-buildmanager-task"
 
   container_definitions = <<DEFINITION
   [
     {
-      "name": "${var.app_name}-${var.app_environment}-container",
+      "name": "${var.app_name}-${var.app_environment}-buildmanager",
       "image": "${var.image_registry_org}/${var.image_registry_image}:${var.image_registry_tag}",
       "entryPoint": [],
       "environment": [],
@@ -17,7 +22,7 @@ resource "aws_ecs_task_definition" "build_task" {
         "options": {
           "awslogs-group": "${aws_cloudwatch_log_group.log-group.id}",
           "awslogs-region": "${var.aws_region}",
-          "awslogs-stream-prefix": "${var.app_name}-${var.app_environment}"
+          "awslogs-stream-prefix": "${local.log_stream_prefix_timestamp}-manager"
         }
       },
       "cpu": 2048,
@@ -35,14 +40,52 @@ resource "aws_ecs_task_definition" "build_task" {
   task_role_arn            = aws_iam_role.ecsTaskExecutionRole.arn
 
   tags = merge(var.common_tags,{
-    Name        = "${var.app_name}-ecs-td"
+    Name        = "${var.app_name}-ecs-td-manager"
+  })
+}
+
+resource "aws_ecs_task_definition" "build_task" {
+  family = "${var.app_name}-task"
+
+  container_definitions = <<DEFINITION
+  [
+    {
+      "name": "${var.app_name}-${var.app_environment}-container",
+      "image": "${var.image_registry_org}/${var.image_registry_image}:${var.image_registry_tag}",
+      "entryPoint": [],
+      "environment": [],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "${aws_cloudwatch_log_group.log-group.id}",
+          "awslogs-region": "${var.aws_region}",
+          "awslogs-stream-prefix": "${local.log_stream_prefix_timestamp}-build"
+        }
+      },
+      "cpu": 2048,
+      "memory": 4096,
+      "networkMode": "awsvpc"
+    }
+  ]
+  DEFINITION
+
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  memory                   = "4096"
+  cpu                      = "2048"
+  execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
+  task_role_arn            = aws_iam_role.ecsTaskExecutionRole.arn
+
+  tags = merge(var.common_tags,{
+    Name        = "${var.app_name}-ecs-td-build"
   })
 }
 
 locals {
   task_overrides = jsonencode({
     "containerOverrides": [{
-      "name": "${var.app_name}-${var.app_environment}-container",
+      "name": "${var.app_name}-${var.app_environment}-buildmanager",
       "environment": [{
         "name": "APP_VERSION",
         "value": "${var.app_version}"
@@ -119,6 +162,8 @@ locals {
       "assignPublicIp": "ENABLED"
     }
   })
+
+  log_stream_prefix_timestamp=formatdate("YYYY-MM-DD_hh-mm-ss", timestamp())
 }
 
 resource "null_resource" "run-build-task" {
@@ -131,7 +176,7 @@ resource "null_resource" "run-build-task" {
     command = <<EOF
     aws ecs run-task \
     --cluster="${aws_ecs_cluster.aws-ecs-cluster.name}" \
-    --task-definition="${aws_ecs_task_definition.build_task.family}" \
+    --task-definition="${aws_ecs_task_definition.build_manager_task.family}" \
     --launch-type="FARGATE" \
     --network-configuration='${local.network_configuration}' \
     --overrides='${local.task_overrides}' \
@@ -144,4 +189,18 @@ EOF
   triggers = {
     always_run = timestamp()
   }  
+}
+
+
+output "ecs-log-group-id" {
+  value = aws_cloudwatch_log_group.log-group.id
+}
+output "ecs-log-group-name" {
+  value = aws_cloudwatch_log_group.log-group.name
+}
+output "ecs-log-group-arn" {
+  value = aws_cloudwatch_log_group.log-group.arn
+}
+output "log_stream_prefix_timestamp" {
+  value = local.log_stream_prefix_timestamp
 }
