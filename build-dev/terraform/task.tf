@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_log_group" "log-group" {
-  name = "${var.app_name}-${var.app_environment}-${formatdate("YYYY-MM-DD_hh-mm-ss", timestamp())}"
+  name = "${var.app_name}-${var.app_environment}-logs"
 
   tags = merge(var.common_tags,{
     Application = var.app_name
@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "build_manager_task" {
         "options": {
           "awslogs-group": "${aws_cloudwatch_log_group.log-group.id}",
           "awslogs-region": "${var.aws_region}",
-          "awslogs-stream-prefix": "build-manager"
+          "awslogs-stream-prefix": "${local.log_stream_prefix_timestamp}-manager"
         }
       },
       "cpu": 2048,
@@ -60,7 +60,7 @@ resource "aws_ecs_task_definition" "build_task" {
         "options": {
           "awslogs-group": "${aws_cloudwatch_log_group.log-group.id}",
           "awslogs-region": "${var.aws_region}",
-          "awslogs-stream-prefix": "build"
+          "awslogs-stream-prefix": "${local.log_stream_prefix_timestamp}-build"
         }
       },
       "cpu": 2048,
@@ -159,6 +159,8 @@ locals {
       "assignPublicIp": "ENABLED"
     }
   })
+
+  log_stream_prefix_timestamp=formatdate("YYYY-MM-DD_hh-mm-ss", timestamp())
 }
 
 resource "null_resource" "run-build-task" {
