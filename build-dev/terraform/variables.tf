@@ -89,6 +89,14 @@ variable "build_manager_pages_per_container" {
   description = "[OPTIONAL] PAGES_PER_CONTAINER env var for build container (how many pages per child container)."
   default = "3"
 }
+  
+  
+variable "build_manager_s3_sync_extra_flags" {
+  description = "[OPTIONAL] S3_SYNC_EXTRA_FLAGS_BUILD_MANAGER env var for build container (additional flags to set for the s3 sync command for the build manager)."
+}
+variable "child_container_s3_sync_extra_flags" {
+  description = "[OPTIONAL] S3_SYNC_EXTRA_FLAGS_CHILD_CONTAINERS env var for build container (additional flags to set for the s3 sync command for the child containers)."
+}
 
 # Benchmarking vars
 variable "benchmarking_num_pages" {

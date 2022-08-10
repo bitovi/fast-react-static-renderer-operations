@@ -124,6 +124,12 @@ locals {
         "name": "BUILD_MANAGER_MODE",
         "value": "${var.build_manager_mode}"
       },{
+        "name": "S3_SYNC_EXTRA_FLAGS_BUILD_MANAGER",
+        "value": "${var.build_manager_s3_sync_extra_flags}"
+      },{
+        "name": "S3_SYNC_EXTRA_FLAGS_CHILD_CONTAINERS",
+        "value": "${var.child_container_s3_sync_extra_flags}"
+      },{
         "name": "RETRY_SLEEP",
         "value": "${var.build_manager_retry_sleep}"
       },{
