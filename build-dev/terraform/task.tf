@@ -5,6 +5,45 @@ resource "aws_cloudwatch_log_group" "log-group" {
     Application = var.app_name
   })
 }
+
+resource "aws_ecs_task_definition" "build_manager_task" {
+  family = "${var.app_name}-buildmanager-task"
+
+  container_definitions = <<DEFINITION
+  [
+    {
+      "name": "${var.app_name}-${var.app_environment}-buildmanager",
+      "image": "${var.image_registry_org}/${var.image_registry_image}:${var.image_registry_tag}",
+      "entryPoint": [],
+      "environment": [],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "${aws_cloudwatch_log_group.log-group.id}",
+          "awslogs-region": "${var.aws_region}",
+          "awslogs-stream-prefix": "build-manager"
+        }
+      },
+      "cpu": 2048,
+      "memory": 4096,
+      "networkMode": "awsvpc"
+    }
+  ]
+  DEFINITION
+
+  requires_compatibilities = ["FARGATE"]
+  network_mode             = "awsvpc"
+  memory                   = "4096"
+  cpu                      = "2048"
+  execution_role_arn       = aws_iam_role.ecsTaskExecutionRole.arn
+  task_role_arn            = aws_iam_role.ecsTaskExecutionRole.arn
+
+  tags = merge(var.common_tags,{
+    Name        = "${var.app_name}-ecs-td"
+  })
+}
+
 resource "aws_ecs_task_definition" "build_task" {
   family = "${var.app_name}-task"
 
@@ -21,7 +60,7 @@ resource "aws_ecs_task_definition" "build_task" {
         "options": {
           "awslogs-group": "${aws_cloudwatch_log_group.log-group.id}",
           "awslogs-region": "${var.aws_region}",
-          "awslogs-stream-prefix": "${var.app_name}-${var.app_environment}"
+          "awslogs-stream-prefix": "build"
         }
       },
       "cpu": 2048,
@@ -47,11 +86,6 @@ locals {
   task_overrides = jsonencode({
     "containerOverrides": [{
       "name": "${var.app_name}-${var.app_environment}-container",
-      "logConfiguration": {
-        "options": {
-          "awslogs-stream-prefix": "build-manager"
-        }
-      },
       "environment": [{
         "name": "APP_VERSION",
         "value": "${var.app_version}"
@@ -137,7 +171,7 @@ resource "null_resource" "run-build-task" {
     command = <<EOF
     aws ecs run-task \
     --cluster="${aws_ecs_cluster.aws-ecs-cluster.name}" \
-    --task-definition="${aws_ecs_task_definition.build_task.family}" \
+    --task-definition="${aws_ecs_task_definition.build_manager_task.family}" \
     --launch-type="FARGATE" \
     --network-configuration='${local.network_configuration}' \
     --overrides='${local.task_overrides}' \
