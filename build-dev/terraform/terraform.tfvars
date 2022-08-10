@@ -35,7 +35,7 @@ build_manager_retry_limit = "15"
 build_manager_pages_per_container = "3"
 
 # child container flags
-child_container_s3_sync_extra_flags = "--exclude 'index.html' --exclude 'index.json'"
+child_container_s3_sync_extra_flags = "--exclude 'index.html' --exclude '_next/data/*/index.json'"
 
 # Benchmarking config
 benchmarking_num_pages = "10"
