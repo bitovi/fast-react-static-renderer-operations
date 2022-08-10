@@ -20,7 +20,10 @@ private_subnets    = ["10.10.0.0/24", "10.10.1.0/24"]
 # ECS
 image_registry_org      =  "bitovi"
 image_registry_image    =  "fast-react-static-renderer-build"
-image_registry_tag      =  "latest"
+# TODO: remove before merge
+image_registry_tag      =  "benchmarking"
+# TODO: uncomment before merge
+# image_registry_tag      =  "latest"
 aws_region  = "us-east-2"
 s3_bucket_contents  = "fast-react-static-renderer-artifacts"
 publish_s3_bucket   = "fast-react-static-renderer-sites-dev"
