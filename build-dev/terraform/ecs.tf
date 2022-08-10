@@ -4,10 +4,3 @@ resource "aws_ecs_cluster" "aws-ecs-cluster" {
     Name        = "${var.app_name}-ecs"
   })
 }
-resource "aws_cloudwatch_log_group" "log-group" {
-  name = "${var.app_name}-${var.app_environment}-logs"
-
-  tags = merge(var.common_tags,{
-    Application = var.app_name
-  })
-}
