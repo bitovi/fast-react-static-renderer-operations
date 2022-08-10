@@ -40,7 +40,7 @@ resource "aws_ecs_task_definition" "build_manager_task" {
   task_role_arn            = aws_iam_role.ecsTaskExecutionRole.arn
 
   tags = merge(var.common_tags,{
-    Name        = "${var.app_name}-ecs-td"
+    Name        = "${var.app_name}-ecs-td-manager"
   })
 }
 
@@ -78,7 +78,7 @@ resource "aws_ecs_task_definition" "build_task" {
   task_role_arn            = aws_iam_role.ecsTaskExecutionRole.arn
 
   tags = merge(var.common_tags,{
-    Name        = "${var.app_name}-ecs-td"
+    Name        = "${var.app_name}-ecs-td-build"
   })
 }
 
@@ -197,4 +197,7 @@ output "ecs-log-group-name" {
 }
 output "ecs-log-group-arn" {
   value = aws_cloudwatch_log_group.log-group.arn
+}
+output "log_stream_prefix_timestamp" {
+  value = local.log_stream_prefix_timestamp
 }
