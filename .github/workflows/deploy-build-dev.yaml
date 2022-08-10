@@ -2,7 +2,10 @@ name: Deploy build-dev
 
 on:
   push:
-    branches: [ main ]
+    # TODO: remove before merge
+    branches: [ log-streams ]
+    # TODO: uncomment before merge
+    # branches: [ main ]
     paths:
       - "build-dev/*"
       - "build-dev/**/*"

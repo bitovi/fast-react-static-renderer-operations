@@ -1,6 +1,10 @@
-# TODO: move to its own ops repo env
-# TODO: output link to CloudWatch log stream for manager task
+resource "aws_cloudwatch_log_group" "log-group" {
+  name = "${var.app_name}-${var.app_environment}-${formatdate("YYYY-MM-DD_hh-mm-ss", timestamp())}"
 
+  tags = merge(var.common_tags,{
+    Application = var.app_name
+  })
+}
 resource "aws_ecs_task_definition" "build_task" {
   family = "${var.app_name}-task"
 
@@ -141,4 +145,15 @@ EOF
   triggers = {
     always_run = timestamp()
   }  
+}
+
+
+output "ecs-log-group-id" {
+  value = aws_cloudwatch_log_group.log-group.id
+}
+output "ecs-log-group-name" {
+  value = aws_cloudwatch_log_group.log-group.name
+}
+output "ecs-log-group-arn" {
+  value = aws_cloudwatch_log_group.log-group.arn
 }
