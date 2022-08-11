@@ -130,6 +130,9 @@ locals {
         "name": "S3_SYNC_EXTRA_FLAGS_CHILD_CONTAINERS",
         "value": "${var.child_container_s3_sync_extra_flags}"
       },{
+        "name": "BUILD_USE_PAGE_DATA_FILE",
+        "value": "${var.child_container_use_page_data_file}"
+      },{
         "name": "RETRY_SLEEP",
         "value": "${var.build_manager_retry_sleep}"
       },{

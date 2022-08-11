@@ -97,6 +97,9 @@ variable "build_manager_s3_sync_extra_flags" {
 variable "child_container_s3_sync_extra_flags" {
   description = "[OPTIONAL] S3_SYNC_EXTRA_FLAGS_CHILD_CONTAINERS env var for build container (additional flags to set for the s3 sync command for the child containers)."
 }
+variable "child_container_use_page_data_file" {
+  description = "[OPTIONAL] BUILD_USE_PAGE_DATA_FILE env var for build container (use a file approach to pass PAGE_DATA information if your page data is large - i.e. your json data would exceed the env var size limits)."
+}
 
 # Benchmarking vars
 variable "benchmarking_num_pages" {
