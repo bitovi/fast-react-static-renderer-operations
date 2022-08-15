@@ -10,6 +10,10 @@ on:
 
   workflow_dispatch:
 
+  # allows this job to be triggered via api
+  repository_dispatch:
+    types: [publish-event]
+
 # concurrency:
 #   group: environment-dev
 
