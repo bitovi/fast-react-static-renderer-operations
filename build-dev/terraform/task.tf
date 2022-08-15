@@ -124,6 +124,15 @@ locals {
         "name": "BUILD_MANAGER_MODE",
         "value": "${var.build_manager_mode}"
       },{
+        "name": "S3_SYNC_EXTRA_FLAGS_BUILD_MANAGER",
+        "value": "${var.build_manager_s3_sync_extra_flags}"
+      },{
+        "name": "S3_SYNC_EXTRA_FLAGS_CHILD_CONTAINERS",
+        "value": "${var.child_container_s3_sync_extra_flags}"
+      },{
+        "name": "BUILD_USE_PAGE_DATA_FILE",
+        "value": "${var.child_container_use_page_data_file}"
+      },{
         "name": "RETRY_SLEEP",
         "value": "${var.build_manager_retry_sleep}"
       },{
@@ -132,6 +141,9 @@ locals {
       },{
         "name": "PAGES_PER_CONTAINER",
         "value": "${var.build_manager_pages_per_container}"
+      },{
+        "name": "NUMBER_OF_PAGES",
+        "value": "${var.benchmarking_num_pages}"
       },{
         "name": "CONTAINER_OVERRIDE_NAME",
         "value": "${var.app_name}-${var.app_environment}-container"
