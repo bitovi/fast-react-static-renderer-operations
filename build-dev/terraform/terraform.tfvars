@@ -32,7 +32,7 @@ cloudfront_distribution_id  = "E2633P2JNWSIZ6"
 build_manager_mode  = "1"
 build_manager_retry_sleep = "1"
 build_manager_retry_limit = "15"
-build_manager_pages_per_container = "600"
+build_manager_pages_per_container = "3"
 
 # child container flags
 child_container_s3_sync_extra_flags = "--exclude 'index.html' --exclude '_next/data/*/index.json'"
@@ -40,4 +40,4 @@ child_container_use_page_data_file = "1"
 
 
 # Benchmarking config
-benchmarking_num_pages = "1000"
+# benchmarking_num_pages = "1000"
