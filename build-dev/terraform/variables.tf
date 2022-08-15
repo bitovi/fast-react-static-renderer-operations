@@ -104,5 +104,4 @@ variable "child_container_use_page_data_file" {
 # Benchmarking vars
 variable "benchmarking_num_pages" {
   description = "[OPTIONAL] NUMBER_OF_PAGES env var for build containers (how many pages to build)."
-  default = "3"
 }
