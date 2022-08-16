@@ -133,6 +133,9 @@ locals {
         "name": "BUILD_USE_PAGE_DATA_FILE",
         "value": "${var.child_container_use_page_data_file}"
       },{
+        "name": "BUILD_MANAGER_USE_PAGE_DATA_FILE",
+        "value": "${var.build_manager_use_page_data_file}"
+      },{
         "name": "RETRY_SLEEP",
         "value": "${var.build_manager_retry_sleep}"
       },{

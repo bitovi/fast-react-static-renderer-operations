@@ -37,6 +37,7 @@ build_manager_pages_per_container = "600"
 # child container flags
 child_container_s3_sync_extra_flags = "--exclude 'index.html' --exclude '_next/data/*/index.json'"
 child_container_use_page_data_file = "1"
+build_manager_use_page_data_file = "1"
 
 
 # Benchmarking config
