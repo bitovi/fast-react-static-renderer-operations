@@ -101,6 +101,10 @@ variable "child_container_use_page_data_file" {
   description = "[OPTIONAL] BUILD_USE_PAGE_DATA_FILE env var for build container (use a file approach to pass PAGE_DATA information if your page data is large - i.e. your json data would exceed the env var size limits)."
 }
 
+variable "build_manager_use_page_data_file" {
+  description = "[OPTIONAL] BUILD_MANAGER_USE_PAGE_DATA_FILE env var for build manager container (use a file approach to pass PAGE_DATA information if your page data is large - i.e. your json data would exceed the env var size limits)."
+}
+
 # Benchmarking vars
 variable "benchmarking_num_pages" {
   description = "[OPTIONAL] NUMBER_OF_PAGES env var for build containers (how many pages to build)."
